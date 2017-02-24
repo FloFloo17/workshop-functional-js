@@ -52,12 +52,16 @@ let showCheckpoint = (checkpoint, index) => {
 
 let run = () => {
   let checkpoints = checkpointsService.getCheckpoints();
-  checkpoints.arr
-  for (var i = 0; i < checkpoints.length; i++) {
-    let checkpoint = checkpoints[i];
-    transformCheckpoint(checkpoint);
-    showCheckpoint(checkpoint, i);
-  }
+  checkpoints.forEach(function(checkpoint) {
+    showCheckpoint( transformCheckpoint(checkpoint), checkpoints.indexOf(checkpoint) );
+  });
+
+  // });
+  // for (var i = 0; i < checkpoints.length; i++) {
+  //   let checkpoint = checkpoints[i];
+  //   transformCheckpoint(checkpoint);
+  //   showCheckpoint(checkpoint, i);
+  // }
 };
 
 module.exports = {
