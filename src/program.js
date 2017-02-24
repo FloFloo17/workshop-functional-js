@@ -26,13 +26,13 @@ let transformCheckpoint = (checkpoint) => {
     // Transform data about distance
     newCheckpoint.distance = calculateDistanceWithRssi(checkpoint.rssi);
     // Clean uninteresting properties
-    
-    // delete checkpoint.id;
-    // delete checkpoint.address;
-    // delete checkpoint.addressType;
-    // delete checkpoint.advertisement;
-    // delete checkpoint.rssi;
-    // delete checkpoint.services;
+
+    delete newCheckpoint.id;
+    delete newCheckpoint.address;
+    delete newCheckpoint.addressType;
+    delete newCheckpoint.advertisement;
+    delete newCheckpoint.rssi;
+    delete newCheckpoint.services;
     // Everything is ok
     return newCheckpoint;
   } else {
@@ -52,6 +52,7 @@ let showCheckpoint = (checkpoint, index) => {
 
 let run = () => {
   let checkpoints = checkpointsService.getCheckpoints();
+  checkpoints.arr
   for (var i = 0; i < checkpoints.length; i++) {
     let checkpoint = checkpoints[i];
     transformCheckpoint(checkpoint);
