@@ -28,8 +28,10 @@ describe('Function transformCheckpoint', function() {
     expect(transformCheckpoint()).to.be.false;
   });
 
-    it('Function transformCheckpoint verify that the parameter is mutated with the function return true', function() {
-    expect(transformCheckpoint(exampleData)).to.be.true;
+    it('Function transformCheckpoint verify that the is pure', function() {
+    	let saveExampleData = exampleData;
+    	transformCheckpoint(exampleData);
+    	expect(exampleData).to.eql(saveExampleData);
   });
 
 });
